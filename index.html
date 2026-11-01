@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>VIP 巧寶頂級尊榮會所 - 抓豆扭扭對決</title>
+  <title>VIP 巧寶頂級尊榮會所 - 抓豆妞妞對決</title>
   <style>
     :root {
       --gold-primary: #f39c12;
@@ -33,7 +33,7 @@
     /* 頂部 Header */
     .header-bar {
       width: 100%;
-      padding: 12px 20px;
+      padding: 10px 20px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 12, 5, 0.9) 100%);
       border-bottom: 2px solid var(--gold-dark);
       box-shadow: 0 4px 25px rgba(243, 156, 18, 0.25);
@@ -43,9 +43,9 @@
       z-index: 10;
     }
 
-    .title-vip { color: var(--gold-light); font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    .title-vip { color: var(--gold-light); font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
     .title-main { 
-      color: #fff; font-size: 18px; font-weight: 900; 
+      color: #fff; font-size: 16px; font-weight: 900; 
       background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 50%, var(--gold-primary) 100%); 
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); 
@@ -55,36 +55,55 @@
       background: linear-gradient(135deg, #4a3004 0%, #120a00 100%);
       border: 1.5px solid var(--gold-light);
       border-radius: 10px;
-      padding: 5px 16px;
+      padding: 4px 12px;
       text-align: right;
       box-shadow: 0 0 15px rgba(243, 156, 18, 0.5), inset 0 0 8px rgba(255, 215, 0, 0.3);
     }
-    .jackpot-label { font-size: 9px; color: var(--gold-light); letter-spacing: 1px; }
-    .jackpot-amount { font-size: 18px; font-weight: bold; color: #00ff88; text-shadow: 0 0 12px rgba(0,255,136,0.8); }
+    .jackpot-label { font-size: 8px; color: var(--gold-light); letter-spacing: 1px; }
+    .jackpot-amount { font-size: 16px; font-weight: bold; color: #00ff88; text-shadow: 0 0 12px rgba(0,255,136,0.8); }
 
-    /* 玩家資訊與闖關狀態列 */
+    /* 遊戲規則說明看板 */
+    .rule-banner {
+      width: 92%;
+      max-width: 520px;
+      background: rgba(18, 14, 5, 0.9);
+      border: 1px solid var(--gold-dark);
+      border-radius: 8px;
+      padding: 6px 12px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: #e2e2e2;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .rule-item span { color: var(--gold-light); font-weight: bold; }
+
+    /* 玩家資訊列 */
     .player-bar {
       width: 92%;
-      margin: 8px auto 0 auto;
+      max-width: 520px;
+      margin: 6px auto 0 auto;
       background: rgba(10, 15, 12, 0.85);
       border: 1px solid rgba(212, 175, 55, 0.5);
-      border-radius: 20px;
-      padding: 6px 16px;
+      border-radius: 15px;
+      padding: 5px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gold-light);
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
     .player-input-group { display: flex; gap: 6px; align-items: center; }
-    .player-input-group input { padding: 4px 8px; background: #000; border: 1px solid var(--gold-dark); color: #fff; border-radius: 6px; font-size: 12px; width: 100px; }
+    .player-input-group input { padding: 3px 8px; background: #000; border: 1px solid var(--gold-dark); color: #fff; border-radius: 6px; font-size: 11px; width: 90px; }
     .ranking-btn { 
       background: linear-gradient(135deg, #ffe066 0%, var(--gold-primary) 100%);
-      color: #000; border: none; padding: 4px 12px; border-radius: 12px; font-weight: bold; cursor: pointer;
+      color: #000; border: none; padding: 3px 10px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 11px;
     }
 
-    /* 牌桌區 - 橢圓形貴賓綠氈 */
+    /* 牌桌核心區 */
     .table-area {
       flex: 1;
       width: 100%;
@@ -93,48 +112,52 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      padding: 5px 0;
     }
 
     .poker-felt-table {
       width: 94%;
       max-width: 520px;
-      padding: 25px 20px;
+      min-height: 200px;
+      padding: 15px 15px;
       background: radial-gradient(ellipse at center, #1b4d2e 0%, #0d2818 70%, #05120a 100%);
-      border: 6px solid #2d1e0f;
+      border: 5px solid #2d1e0f;
       outline: 2px solid var(--gold-primary);
-      border-radius: 100px;
+      border-radius: 60px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.8);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       position: relative;
+      z-index: 5;
     }
 
     .stage-panel {
       text-align: center;
-      padding: 10px;
+      padding: 5px;
       width: 100%;
     }
-    .stage-title { font-size: 16px; color: var(--gold-light); margin-bottom: 10px; font-weight: bold; }
+    .stage-title { font-size: 15px; color: var(--gold-light); margin-bottom: 8px; font-weight: bold; }
     .stage-result-box {
-      font-size: 24px; font-weight: 900; color: #00ff88;
+      font-size: 22px; font-weight: 900; color: #00ff88;
       background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary);
-      border-radius: 10px; padding: 10px; margin: 10px auto; width: 80%;
+      border-radius: 10px; padding: 8px; margin: 8px auto; width: 80%;
       text-shadow: 0 0 10px rgba(0,255,136,0.6);
     }
 
     .cards-container {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       align-items: center;
       width: 100%;
-      min-height: 120px;
+      min-height: 110px;
     }
 
     .card-base {
-      width: 17vw; max-width: 72px;
-      height: 25vw; max-height: 105px;
+      width: 16vw; max-width: 65px;
+      height: 23vw; max-height: 95px;
       background: #ffffff !important;
       border-radius: 8px;
       border: 1px solid #ddd;
@@ -144,16 +167,16 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 6px;
-      font-size: 16px;
+      padding: 5px;
+      font-size: 15px;
       line-height: 1;
     }
     .card-base.red { color: #d63031 !important; }
     .card-base.black { color: #2d3436 !important; }
 
     .peek-card-slot {
-      width: 17vw; max-width: 72px;
-      height: 25vw; max-height: 105px;
+      width: 16vw; max-width: 65px;
+      height: 23vw; max-height: 95px;
       position: relative;
     }
 
@@ -175,7 +198,7 @@
       justify-content: center;
       align-items: center;
       color: var(--gold-light);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: bold;
       letter-spacing: 1px;
       cursor: grab;
@@ -185,8 +208,8 @@
     .card-cover-flap:active { cursor: grabbing; }
 
     .peek-hint {
-      margin-top: 15px;
-      font-size: 12px;
+      margin-top: 10px;
+      font-size: 11px;
       color: var(--gold-light);
       animation: pulse 1.5s infinite;
       letter-spacing: 1px;
@@ -195,20 +218,21 @@
     @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
     .result-title {
-      font-size: 20px; font-weight: 900; color: #fff;
-      margin-top: 10px; height: 35px;
+      font-size: 17px; font-weight: 900; color: #fff;
+      margin-top: 8px; height: 30px;
       text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 25px rgba(243, 156, 18, 0.8);
       text-align: center;
       letter-spacing: 1px;
     }
 
+    /* 底部控制區 */
     .controls { 
-      width: 100%; padding: 18px; display: flex; gap: 14px; justify-content: center; 
+      width: 100%; padding: 14px; display: flex; gap: 12px; justify-content: center; 
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.98) 0%, rgba(15, 12, 5, 0.9) 100%);
       border-top: 1.5px solid var(--gold-dark);
       z-index: 20; 
     }
-    .btn { padding: 12px 30px; border-radius: 25px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .btn { padding: 10px 26px; border-radius: 22px; border: none; font-weight: bold; font-size: 13px; cursor: pointer; transition: all 0.2s; }
     .btn-gold { 
       background: linear-gradient(135deg, #ffe066 0%, #f39c12 50%, #b7950b 100%); 
       color: #000; 
@@ -235,12 +259,19 @@
   <div class="header-bar">
     <div>
       <div class="title-vip">VIP 巧寶頂級尊榮會所</div>
-      <div class="title-main">抓豆扭扭・巔峰對決</div>
+      <div class="title-main">抓豆妞妞・巔峰對決</div>
     </div>
     <div class="jackpot-container">
       <div class="jackpot-label">累積彩金池</div>
       <div class="jackpot-amount" id="jackpotDisplay">$ 1,888,000</div>
     </div>
+  </div>
+
+  <!-- 遊戲規則說明看板 -->
+  <div class="rule-banner">
+    <div class="rule-item"><span>1. 抓豆子</span> 定基數</div>
+    <div class="rule-item"><span>2. 抽妞妞</span> 拼倍數</div>
+    <div class="rule-item"><span>3. 瞇紙牌</span> 贏大獎</div>
   </div>
 
   <!-- 玩家登錄條 -->
@@ -364,28 +395,21 @@
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-    // 依照您的規則生成抓豆子四位數基數
     function generateBeanNumber() {
-      // 千位數固定為 0 (實際顯示時組合為 4 位數，例如 0520 或依需求轉成 4 位數，此處千位固定0即為 0xxx 或可調整為千位固定0%機率不出現1-9)
-      const thousands = 0; 
-      
-      // 取得後台設定的百位 5~9 機率 (預設 3%)
+      const thousands = 0; // 千位數固定為 0
       const prob = parseInt(document.getElementById('cfgBeanProb').value) || 3;
       const roll = Math.random() * 100;
 
       let hundreds = 0;
       if (roll < prob) {
-        // 命中 5~9
-        hundreds = Math.floor(Math.random() * 5) + 5; // 5, 6, 7, 8, 9
+        hundreds = Math.floor(Math.random() * 5) + 5; // 5~9
       } else {
-        // 其他 (0~4)
-        hundreds = Math.floor(Math.random() * 5); // 0, 1, 2, 3, 4
+        hundreds = Math.floor(Math.random() * 5); // 0~4
       }
 
-      const tens = Math.floor(Math.random() * 10); // 0~9
-      const ones = Math.floor(Math.random() * 10); // 0~9
+      const tens = Math.floor(Math.random() * 10);
+      const ones = Math.floor(Math.random() * 10);
 
-      // 組合為 4 位數顯示格式 (千位為0，實際數值即 hundreds*100 + tens*10 + ones，或組合為字串)
       return (thousands * 1000) + (hundreds * 100) + (tens * 10) + ones;
     }
 
@@ -399,12 +423,12 @@
         
         table.innerHTML = `
           <div class="stage-panel">
-            <div class="stage-title">🌱 第一關：抓豆子中...</div>
+            <div class="stage-title">🌱 第一關：抓豆子完成</div>
             <div class="stage-result-box">${currentBean} 豆</div>
-            <div style="font-size:13px; color:var(--gold-light);">已依後台機率規則成功抓出基礎基數！</div>
+            <div style="font-size:12px; color:var(--gold-light);">已依後台機率規則成功抓出基礎基數！</div>
           </div>
         `;
-        btn.innerText = '🌀 進行第二關：抽扭扭';
+        btn.innerText = '🌀 進行第二關：抽妞妞倍數';
 
       } else if (gameState === 'BEAN') {
         const twists = [2, 3, 5, 8];
@@ -413,9 +437,9 @@
 
         table.innerHTML = `
           <div class="stage-panel">
-            <div class="stage-title">🌀 第二關：抽扭扭倍數中...</div>
+            <div class="stage-title">🌀 第二關：抽妞妞倍數完成</div>
             <div class="stage-result-box">幸運 ${currentTwist} 倍！</div>
-            <div style="font-size:13px; color:var(--gold-light);">基數 ${currentBean}豆 × ${currentTwist}倍 = 總彩金 ${currentBean * currentTwist}豆！</div>
+            <div style="font-size:12px; color:var(--gold-light);">基數 ${currentBean}豆 × ${currentTwist}倍 = 總彩金 ${currentBean * currentTwist}豆！</div>
           </div>
         `;
         btn.innerText = '🎴 進入最終局：巔峰瞇牌';
@@ -454,4 +478,118 @@
 
       const container = document.getElementById('cardsContainer');
       frontCards.forEach(card => {
-        const div = document.createElement('div
+        const div = document.createElement('div');
+        div.className = 'card-base ' + (card.isRed ? 'red' : 'black');
+        div.innerHTML = `<div>${card.text}</div><div style="text-align:right;">${card.text}</div>`;
+        container.appendChild(div);
+      });
+
+      const slot = document.createElement('div');
+      slot.className = 'peek-card-slot';
+      slot.innerHTML = `
+        <div class="card-base card-underneath ${lastCard.isRed ? 'red' : 'black'}">
+          <div>${lastCard.text}</div>
+          <div style="text-align:right;">${lastCard.text}</div>
+        </div>
+        <div class="card-cover-flap" id="cardCover">巧寶尊榮</div>
+      `;
+      container.appendChild(slot);
+
+      initPeekInteraction();
+    }
+
+    function initPeekInteraction() {
+      const cover = document.getElementById('cardCover');
+      if (!cover) return;
+
+      let startY = 0, isDragging = false;
+      let isPeeked = false;
+
+      function triggerFinish() {
+        if (isPeeked) return;
+        isPeeked = true;
+        cover.style.transform = 'translateY(-220px)';
+        cover.style.opacity = '0';
+        setTimeout(() => { cover.style.display = 'none'; }, 200);
+        showFinalResult();
+      }
+
+      function onStart(e) {
+        if (isPeeked) return;
+        isDragging = true;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+      }
+
+      function onMove(e) {
+        if (!isDragging || isPeeked) return;
+        const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+        const deltaY = startY - currentY;
+
+        if (deltaY > 0) {
+          cover.style.transform = `translateY(-${deltaY}px)`;
+          if (deltaY > 40) {
+            isDragging = false;
+            triggerFinish();
+          }
+        }
+      }
+
+      function onEnd() {
+        if (isPeeked) return;
+        isDragging = false;
+        cover.style.transform = 'translateY(0px)';
+      }
+
+      cover.addEventListener('touchstart', onStart, {passive: true});
+      cover.addEventListener('touchmove', onMove, {passive: true});
+      cover.addEventListener('touchend', onEnd);
+      cover.addEventListener('mousedown', onStart);
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onEnd);
+    }
+
+    function showFinalResult() {
+      const peekHint = document.getElementById('peekHint');
+      if (peekHint) peekHint.style.display = 'none';
+      const title = document.getElementById('resultTitle');
+      
+      const mode = document.getElementById('cfgWinType').value;
+      let winName = mode === '5gong' ? '五公 (5倍)' : (mode === 'niu9' ? '牛九 (3倍)' : '平牛 (1倍)');
+      let totalWin = currentBean * currentTwist;
+
+      title.innerText = `👑 恭喜中獎！${winName} 總得分：${totalWin.toLocaleString()} 豆`;
+
+      const playerName = document.getElementById('playerNameInput').value.trim() || '尊榮貴賓';
+      const nowTime = new Date().toLocaleTimeString();
+      playHistory.unshift({ time: nowTime, name: playerName, detail: `基數:${currentBean} / 妞妞倍數:${currentTwist}x`, result: `${totalWin.toLocaleString()} 豆` });
+      
+      updateHistoryTable();
+
+      const btn = document.getElementById('actionBtn');
+      btn.innerText = '🌱 再次挑戰（重新抓豆子）';
+      btn.disabled = false;
+      gameState = 'END';
+    }
+
+    function updateHistoryTable() {
+      const tbody = document.getElementById('historyTableBody');
+      tbody.innerHTML = '';
+      playHistory.forEach(item => {
+        tbody.innerHTML += `<tr><td>${item.time}</td><td>${item.name}</td><td>${item.detail}</td><td style="color:#00ff88; font-weight:bold;">${item.result}</td></tr>`;
+      });
+    }
+
+    window.onload = function() {
+      const table = document.getElementById('gameTable');
+      table.innerHTML = `
+        <div class="stage-panel">
+          <div class="stage-title">🌟 歡迎來到 VIP 巧寶頂級尊榮會所</div>
+          <div style="font-size:13px; color:#ddd; margin:10px 0; line-height:1.5;">
+            請先輸入您的貴賓大名，<br>點擊下方按鈕開始<b>「抓豆子」</b>與<b>「抽妞妞」</b>雙重闖關！
+          </div>
+        </div>
+      `;
+    };
+  </script>
+</body>
+</html>
