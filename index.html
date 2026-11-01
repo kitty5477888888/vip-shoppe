@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>VIP 巧寶頂級尊榮會所 - 抓豆扭扭對決</title>
+  <style>
+    :root {
+      --gold-primary: #f39c12;
+      --gold-light: #f1c40f;
+      --gold-dark: #b7950b;
+      --bg-dark: #050a06;
+    }
+
+    * { box-sizing: border-box; user-select: none; -webkit-user-select: none; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      height: 100dvh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at center, rgba(16, 38, 22, 0.95) 0%, rgba(3, 7, 4, 0.98) 100%),
+        repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.03) 0, rgba(212, 175, 55, 0.03) 2px, transparent 0, transparent 40px);
+    }
+
+    /* 頂部 Header */
+    .header-bar {
+      width: 100%;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 12, 5, 0.9) 100%);
+      border-bottom: 2px solid var(--gold-dark);
+      box-shadow: 0 4px 25px rgba(243, 156, 18, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .title-vip { color: var(--gold-light); font-size: 11px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    .title-main { 
+      color: #fff; font-size: 18px; font-weight: 900; 
+      background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 50%, var(--gold-primary) 100%); 
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); 
+    }
+
+    .jackpot-container {
+      background: linear-gradient(135deg, #4a3004 0%, #120a00 100%);
+      border: 1.5px solid var(--gold-light);
+      border-radius: 10px;
+      padding: 5px 16px;
+      text-align: right;
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.5), inset 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+    .jackpot-label { font-size: 9px; color: var(--gold-light); letter-spacing: 1px; }
+    .jackpot-amount { font-size: 18px; font-weight: bold; color: #00ff88; text-shadow: 0 0 12px rgba(0,255,136,0.8); }
+
+    /* 玩家資訊與闖關狀態列 */
+    .player-bar {
+      width: 92%;
+      margin: 8px auto 0 auto;
+      background: rgba(10, 15, 12, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 20px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .player-input-group { display: flex; gap: 6px; align-items: center; }
+    .player-input-group input { padding: 4px 8px; background: #000; border: 1px solid var(--gold-dark); color: #fff; border-radius: 6px; font-size: 12px; width: 100px; }
+    .ranking-btn { 
+      background: linear-gradient(135deg, #ffe066 0%, var(--gold-primary) 100%);
+      color: #000; border: none; padding: 4px 12px; border-radius: 12px; font-weight: bold; cursor: pointer;
+    }
+
+    /* 牌桌區 - 橢圓形貴賓綠氈 */
+    .table-area {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .poker-felt-table {
+      width: 94%;
+      max-width: 520px;
+      padding: 25px 20px;
+      background: radial-gradient(ellipse at center, #1b4d2e 0%, #0d2818 70%, #05120a 100%);
+      border: 6px solid #2d1e0f;
+      outline: 2px solid var(--gold-primary);
+      border-radius: 100px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .stage-panel {
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+    .stage-title { font-size: 16px; color: var(--gold-light); margin-bottom: 10px; font-weight: bold; }
+    .stage-result-box {
+      font-size: 24px; font-weight: 900; color: #00ff88;
+      background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary);
+      border-radius: 10px; padding: 10px; margin: 10px auto; width: 80%;
+      text-shadow: 0 0 10px rgba(0,255,136,0.6);
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 120px;
+    }
+
+    .card-base {
+      width: 17vw; max-width: 72px;
+      height: 25vw; max-height: 105px;
+      background: #ffffff !important;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,175,55,0.4);
+      position: relative;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 6px;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .card-base.red { color: #d63031 !important; }
+    .card-base.black { color: #2d3436 !important; }
+
+    .peek-card-slot {
+      width: 17vw; max-width: 72px;
+      height: 25vw; max-height: 105px;
+      position: relative;
+    }
+
+    .card-underneath {
+      position: absolute;
+      top: 0; left: 0;
+      z-index: 1;
+    }
+
+    .card-cover-flap {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #181818 0%, #3a3a3a 100%);
+      border: 2px solid var(--gold-light);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.9), inset 0 0 10px rgba(241,196,15,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: grab;
+      z-index: 10;
+      transition: transform 0.05s linear, opacity 0.25s ease;
+    }
+    .card-cover-flap:active { cursor: grabbing; }
+
+    .peek-hint {
+      margin-top: 15px;
+      font-size: 12px;
+      color: var(--gold-light);
+      animation: pulse 1.5s infinite;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(241,196,15,0.8);
+    }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+    .result-title {
+      font-size: 20px; font-weight: 900; color: #fff;
+      margin-top: 10px; height: 35px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 25px rgba(243, 156, 18, 0.8);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .controls { 
+      width: 100%; padding: 18px; display: flex; gap: 14px; justify-content: center; 
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.98) 0%, rgba(15, 12, 5, 0.9) 100%);
+      border-top: 1.5px solid var(--gold-dark);
+      z-index: 20; 
+    }
+    .btn { padding: 12px 30px; border-radius: 25px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .btn-gold { 
+      background: linear-gradient(135deg, #ffe066 0%, #f39c12 50%, #b7950b 100%); 
+      color: #000; 
+      box-shadow: 0 4px 20px rgba(243, 156, 18, 0.6); 
+      text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    }
+    .btn-gold:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 25px rgba(243, 156, 18, 0.8); }
+    .btn-setting { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:100; justify-content:center; align-items:center; backdrop-filter: blur(5px); }
+    .modal-content { background: #121212; border: 1.5px solid var(--gold-primary); border-radius: 14px; width: 88%; max-width: 380px; padding: 22px; box-shadow: 0 10px 35px rgba(0,0,0,0.9); }
+    .modal-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--gold-dark); padding-bottom: 10px; margin-bottom: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 12px; color: var(--gold-light); margin-bottom: 5px; }
+    .form-group input, .form-group select { width: 100%; padding: 8px 10px; background: #000; border: 1px solid var(--gold-dark); color: #fff; border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 8px; text-align: left; border-bottom: 1px solid #2a2a2a; }
+    th { color: var(--gold-light); }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部 Header -->
+  <div class="header-bar">
+    <div>
+      <div class="title-vip">VIP 巧寶頂級尊榮會所</div>
+      <div class="title-main">抓豆扭扭・巔峰對決</div>
+    </div>
+    <div class="jackpot-container">
+      <div class="jackpot-label">累積彩金池</div>
+      <div class="jackpot-amount" id="jackpotDisplay">$ 1,888,000</div>
+    </div>
+  </div>
+
+  <!-- 玩家登錄條 -->
+  <div class="player-bar">
+    <div class="player-input-group">
+      <span>👤 貴賓大名:</span>
+      <input type="text" id="playerNameInput" placeholder="請輸入大名" value="尊榮貴賓">
+    </div>
+    <button class="ranking-btn" onclick="openModal('rankingModal')">查看後台記錄</button>
+  </div>
+
+  <!-- 牌桌核心區 -->
+  <div class="table-area">
+    <div class="poker-felt-table" id="gameTable"></div>
+  </div>
+
+  <!-- 底部按鈕 -->
+  <div class="controls">
+    <button class="btn btn-gold" id="actionBtn" onclick="handleAction()">🌱 開始抓豆子</button>
+    <button class="btn btn-setting" onclick="checkAdminAuth()">⚙️ 後台控制</button>
+  </div>
+
+  <!-- 紀錄 Modal -->
+  <div class="modal" id="rankingModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="color:var(--gold-light)">📋 貴賓闖關中獎記錄</h3>
+        <span style="cursor:pointer; font-size:18px;" onclick="closeModal('rankingModal')">✕</span>
+      </div>
+      <div style="max-height: 200px; overflow-y: auto;">
+        <table>
+          <thead><tr><th>時間</th><th>玩家</th><th>基數/倍數</th><th>最終結果</th></tr></thead>
+          <tbody id="historyTableBody">
+            <tr><td colspan="4" style="text-align:center; color:#777;">尚無記錄</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 密碼驗證 Modal -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="color:var(--gold-light)">🔒 管理員身分驗證</h3>
+        <span style="cursor:pointer; font-size:18px;" onclick="closeModal('authModal')">✕</span>
+      </div>
+      <div class="form-group">
+        <label>請輸入營運安全密碼：</label>
+        <input type="password" id="adminPwdInput" placeholder="請輸入4位數密碼">
+      </div>
+      <button class="btn btn-gold" style="width:100%; margin-top:8px;" onclick="verifyPassword()">確認解鎖</button>
+    </div>
+  </div>
+
+  <!-- 控制台 Modal (含抓豆機率設定) -->
+  <div class="modal" id="configModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="color:var(--gold-light)">⚙️ 營運控制台</h3>
+        <span style="cursor:pointer; font-size:18px;" onclick="closeModal('configModal')">✕</span>
+      </div>
+      <div class="form-group">
+        <label>彩金池金額 ($)</label>
+        <input type="number" id="cfgJackpot" value="1888000" onchange="updateConfig()">
+      </div>
+      <div class="form-group">
+        <label>抓豆子・百位數 5~9 出現機率 (%)</label>
+        <input type="number" id="cfgBeanProb" value="3" min="0" max="100">
+      </div>
+      <div class="form-group">
+        <label>VIP 指定牌型 (展演模式)</label>
+        <select id="cfgWinType">
+          <option value="5gong">👑 五公 (5倍)</option>
+          <option value="niu9">🔥 牛九 (3倍)</option>
+          <option value="random">🎲 完全隨機</option>
+        </select>
+      </div>
+      <button class="btn btn-gold" style="width:100%; margin-top:10px;" onclick="closeModal('configModal')">儲存關閉</button>
+    </div>
+  </div>
+
+  <script>
+    let config = { jackpot: 1888000, winType: '5gong', beanProb: 3 };
+    let gameState = 'INIT'; 
+    let currentBean = 0;
+    let currentTwist = 1;
+    let playHistory = [];
+
+    const suits = ['♠', '♥', '♣', '♦'];
+    const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+    function getRandomCard() {
+      const suit = suits[Math.floor(Math.random() * suits.length)];
+      const val = values[Math.floor(Math.random() * values.length)];
+      return { val: val, suit: suit, text: val + suit, isRed: (suit === '♥' || suit === '♦') };
+    }
+
+    function checkAdminAuth() {
+      document.getElementById('adminPwdInput').value = '';
+      openModal('authModal');
+    }
+
+    function verifyPassword() {
+      if (document.getElementById('adminPwdInput').value === '2366') {
+        closeModal('authModal');
+        openModal('configModal');
+      } else {
+        alert('❌ 密碼錯誤！');
+      }
+    }
+
+    function updateConfig() {
+      const jVal = document.getElementById('cfgJackpot');
+      const pVal = document.getElementById('cfgBeanProb');
+      if (jVal) config.jackpot = parseInt(jVal.value) || 1888000;
+      if (pVal) config.beanProb = parseInt(pVal.value) || 3;
+      document.getElementById('jackpotDisplay').innerText = '$ ' + config.jackpot.toLocaleString();
+    }
+
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    // 依照您的規則生成抓豆子四位數基數
+    function generateBeanNumber() {
+      // 千位數固定為 0 (實際顯示時組合為 4 位數，例如 0520 或依需求轉成 4 位數，此處千位固定0即為 0xxx 或可調整為千位固定0%機率不出現1-9)
+      const thousands = 0; 
+      
+      // 取得後台設定的百位 5~9 機率 (預設 3%)
+      const prob = parseInt(document.getElementById('cfgBeanProb').value) || 3;
+      const roll = Math.random() * 100;
+
+      let hundreds = 0;
+      if (roll < prob) {
+        // 命中 5~9
+        hundreds = Math.floor(Math.random() * 5) + 5; // 5, 6, 7, 8, 9
+      } else {
+        // 其他 (0~4)
+        hundreds = Math.floor(Math.random() * 5); // 0, 1, 2, 3, 4
+      }
+
+      const tens = Math.floor(Math.random() * 10); // 0~9
+      const ones = Math.floor(Math.random() * 10); // 0~9
+
+      // 組合為 4 位數顯示格式 (千位為0，實際數值即 hundreds*100 + tens*10 + ones，或組合為字串)
+      return (thousands * 1000) + (hundreds * 100) + (tens * 10) + ones;
+    }
+
+    function handleAction() {
+      const table = document.getElementById('gameTable');
+      const btn = document.getElementById('actionBtn');
+
+      if (gameState === 'INIT' || gameState === 'END') {
+        currentBean = generateBeanNumber();
+        gameState = 'BEAN';
+        
+        table.innerHTML = `
+          <div class="stage-panel">
+            <div class="stage-title">🌱 第一關：抓豆子中...</div>
+            <div class="stage-result-box">${currentBean} 豆</div>
+            <div style="font-size:13px; color:var(--gold-light);">已依後台機率規則成功抓出基礎基數！</div>
+          </div>
+        `;
+        btn.innerText = '🌀 進行第二關：抽扭扭';
+
+      } else if (gameState === 'BEAN') {
+        const twists = [2, 3, 5, 8];
+        currentTwist = twists[Math.floor(Math.random() * twists.length)];
+        gameState = 'TWIST';
+
+        table.innerHTML = `
+          <div class="stage-panel">
+            <div class="stage-title">🌀 第二關：抽扭扭倍數中...</div>
+            <div class="stage-result-box">幸運 ${currentTwist} 倍！</div>
+            <div style="font-size:13px; color:var(--gold-light);">基數 ${currentBean}豆 × ${currentTwist}倍 = 總彩金 ${currentBean * currentTwist}豆！</div>
+          </div>
+        `;
+        btn.innerText = '🎴 進入最終局：巔峰瞇牌';
+
+      } else if (gameState === 'TWIST') {
+        gameState = 'PEEK';
+        renderPeekTable();
+        btn.innerText = '⏳ 正在瞇牌中...';
+        btn.disabled = true;
+      }
+    }
+
+    function renderPeekTable() {
+      const table = document.getElementById('gameTable');
+      let frontCards = [];
+      let lastCard = {};
+
+      const mode = document.getElementById('cfgWinType').value;
+      if (mode === '5gong') {
+        frontCards = [{text:'J♠',isRed:false}, {text:'Q♥',isRed:true}, {text:'K♣',isRed:false}, {text:'J♦',isRed:true}];
+        lastCard = {text:'K♠', isRed:false};
+      } else if (mode === 'niu9') {
+        frontCards = [{text:'10♠',isRed:false}, {text:'J♥',isRed:true}, {text:'K♣',isRed:false}, {text:'9♦',isRed:true}];
+        lastCard = {text:'10♦', isRed:true};
+      } else {
+        frontCards = [getRandomCard(), getRandomCard(), getRandomCard(), getRandomCard()];
+        lastCard = getRandomCard();
+      }
+
+      let html = `
+        <div class="cards-container" id="cardsContainer"></div>
+        <div class="peek-hint" id="peekHint">👆 按住第5張黑色卡背向上推開，慢慢觀察邊角點數</div>
+        <div class="result-title" id="resultTitle"></div>
+      `;
+      table.innerHTML = html;
+
+      const container = document.getElementById('cardsContainer');
+      frontCards.forEach(card => {
+        const div = document.createElement('div
